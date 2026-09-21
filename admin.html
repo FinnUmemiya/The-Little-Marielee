@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — The Little Marielee</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=2" />
+  <link rel="apple-touch-icon" href="assets/logo.png?v=2" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body is-loading">
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-3"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- ===== LOGIN GATE ===== -->
+  <div class="gate reveal-item" id="gate" style="--d:0s">
+    <div class="gate-card">
+      <div class="step-icon">🔒</div>
+      <h1>Admin Access</h1>
+      <p>Enter your Admin Key to manage whitelist entries.</p>
+      <div class="field">
+        <input type="password" id="input-key" placeholder="Admin key" autocomplete="off" />
+      </div>
+      <p class="field-error" id="err-key"></p>
+      <button class="btn-modal" id="btn-unlock"><span class="btn-label">Unlock</span></button>
+      <p class="gate-hint">This key is verified server-side via Google Apps Script and cached only in your browser session.</p>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD ===== -->
+  <div class="dashboard" id="dashboard" hidden>
+    <header class="admin-nav">
+      <div class="logo"><img src="assets/favicon.png?v=2" alt="Logo" class="admin-logo-img" /> The Little Marielee — Admin</div>
+      <div class="admin-nav-actions">
+        <a href="index.html" class="nav-link">← Main Site</a>
+        <button class="btn-ghost" id="btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-summary">
+        <div class="summary-card">
+          <span class="stat-label">Total Whitelisted</span>
+          <span class="stat-value" id="summary-total">—</span>
+        </div>
+        <div class="summary-card">
+          <span class="stat-label">Latest Entry</span>
+          <span class="stat-value stat-value-sm" id="summary-latest">—</span>
+        </div>
+        <div class="admin-actions">
+          <button class="btn-ghost" id="btn-refresh">
+            <span>Refresh</span>
+          </button>
+          <button class="btn-ghost" id="btn-export">
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== PROJECT & SOCIAL SETTINGS ===== -->
+      <section class="admin-card settings-card" id="settings-card">
+        <div class="settings-header">
+          <div class="settings-header-text">
+            <h2 class="settings-title"><span class="settings-icon">⚙️</span> Social &amp; Project Settings</h2>
+            <p class="settings-desc">Configure total supply, official X account, featured tweet link, Discord, and Telegram links.</p>
+          </div>
+          <button type="button" class="btn-ghost btn-sm" id="btn-toggle-settings">
+            <span id="settings-toggle-text">Collapse ▲</span>
+          </button>
+        </div>
+
+        <form id="form-settings" class="settings-body">
+          <div class="settings-grid">
+            <div class="setting-field">
+              <label for="set-supply">Total Supply</label>
+              <input type="text" id="set-supply" placeholder="2,222" autocomplete="off" />
+              <span class="setting-hint">Displayed across hero stats, subtitle, and mint card.</span>
+            </div>
+
+            <div class="setting-field">
+              <label for="set-twitter">Official X / Twitter Handle</label>
+              <div class="field-prefix-wrap">
+                <span class="field-prefix">@</span>
+                <input type="text" id="set-twitter" placeholder="MarieleeHQ" autocomplete="off" />
+              </div>
+              <span class="setting-hint">Used for the Follow task and footer links.</span>
+            </div>
+
+            <div class="setting-field">
+              <label for="set-post">Featured Tweet / Post Link</label>
+              <input type="url" id="set-post" placeholder="https://x.com/MarieleeHQ/status/..." autocomplete="off" />
+              <span class="setting-hint">Opened when users click "Open Post on X".</span>
+            </div>
+
+            <div class="setting-field">
+              <label for="set-opensea">OpenSea Collection Link (Optional)</label>
+              <input type="url" id="set-opensea" placeholder="https://opensea.io/collection/..." autocomplete="off" />
+              <span class="setting-hint">Displayed in website footer next to X / Twitter.</span>
+            </div>
+
+            <div class="setting-field">
+              <label for="set-discord">Discord Invite Link (Optional)</label>
+              <input type="url" id="set-discord" placeholder="https://discord.gg/..." autocomplete="off" />
+              <span class="setting-hint">Displayed in website footer if filled.</span>
+            </div>
+
+            <div class="setting-field">
+              <label for="set-telegram">Telegram Link (Optional)</label>
+              <input type="url" id="set-telegram" placeholder="https://t.me/..." autocomplete="off" />
+              <span class="setting-hint">Displayed in website footer if filled.</span>
+            </div>
+          </div>
+
+          <div class="settings-footer">
+            <button type="submit" class="btn-modal btn-save" id="btn-save-settings">
+              <span class="btn-label">Save Settings</span>
+            </button>
+            <span class="settings-notice" id="settings-notice"></span>
+          </div>
+        </form>
+      </section>
+
+      <div class="admin-toolbar">
+        <input type="text" id="search" placeholder="Search by X username, wallet, or comment link..." class="search-input" />
+      </div>
+
+      <div class="table-wrap">
+        <table class="admin-table" id="table">
+          <thead>
+            <tr>
+              <th data-sort="timestamp">Time <span class="sort-arrow"></span></th>
+              <th data-sort="twitter">X / Twitter <span class="sort-arrow"></span></th>
+              <th>Comment Proof</th>
+              <th data-sort="wallet">Wallet <span class="sort-arrow"></span></th>
+              <th data-sort="status">Status <span class="sort-arrow"></span></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr><td colspan="6" class="table-empty">Loading entries...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="admin-footnote">Showing <span id="visible-count">0</span> of <span id="total-count">0</span> entries.</p>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="assertive" hidden></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
