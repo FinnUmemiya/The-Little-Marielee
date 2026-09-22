@@ -793,11 +793,14 @@ input:focus-visible {
 }
 
 .ticker-vertical-window {
-  flex: 1;
+  height: 34px !important;
+  max-height: 34px !important;
+  min-height: 34px !important;
+  flex: 1 1 34px;
   min-width: 0;
-  height: 34px;
   position: relative;
-  overflow: hidden;
+  overflow: hidden !important;
+  contain: paint;
   mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%);
 }
@@ -809,8 +812,10 @@ input:focus-visible {
   will-change: transform;
 }
 
-.about-highlight-box:hover .ticker-vertical-track {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .about-highlight-box:hover .ticker-vertical-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes tickerScrollDown {
@@ -824,6 +829,8 @@ input:focus-visible {
 
 .ticker-item {
   height: 34px;
+  min-height: 34px;
+  max-height: 34px;
   display: flex;
   align-items: center;
   gap: 0.45rem;
@@ -832,6 +839,7 @@ input:focus-visible {
   font-weight: 700;
   color: var(--text);
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .ticker-name {
@@ -856,15 +864,53 @@ input:focus-visible {
   letter-spacing: 0.02em;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .about-highlight-box {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.35rem;
+    gap: 0.25rem;
     padding: 0.65rem 0.95rem;
+    box-sizing: border-box;
   }
+
+  .ticker-label-wrap {
+    gap: 0.4rem;
+  }
+
+  .ticker-label {
+    font-size: 0.88rem;
+  }
+
   .ticker-vertical-window {
-    width: 100%;
+    width: 100% !important;
+    height: 34px !important;
+    max-height: 34px !important;
+    min-height: 34px !important;
+    flex: 0 0 34px !important;
+    overflow: hidden !important;
+    contain: paint;
+  }
+
+  .ticker-item {
+    height: 34px;
+    min-height: 34px;
+    max-height: 34px;
+    font-size: 0.82rem;
+    gap: 0.35rem;
+  }
+
+  .ticker-name {
+    font-size: 0.78rem;
+    padding: 0.12rem 0.48rem;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticker-wallet {
+    font-size: 0.74rem;
+    padding: 0.08rem 0.38rem;
   }
 }
 
