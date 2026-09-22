@@ -190,7 +190,7 @@ function closeModal() {
   document.body.style.overflow = "";
   setTimeout(() => {
     modal.hidden = true;
-  }, 250);
+  }, 280);
 }
 
 function goToStep(step) {
