@@ -90,7 +90,7 @@
 
       <div class="whitelist-status" id="whitelist-status" hidden>
         <span class="whitelist-status-dot" aria-hidden="true"></span>
-        <span>You are on the whitelist <span aria-hidden="true">✨</span> The Little Marielee awaits.</span>
+        <span>You are on the whitelist • The Little Marielee awaits.</span>
       </div>
 
       <div class="whitelist-status is-full" id="whitelist-full-status" hidden>
@@ -122,7 +122,7 @@
             </p>
             <div class="about-highlight-box about-ticker-box">
               <div class="ticker-label-wrap">
-                <span class="highlight-star">✨</span>
+                <span class="ticker-live-dot" aria-hidden="true"></span>
                 <span class="ticker-label">Recent Whitelist:</span>
               </div>
               <div class="ticker-vertical-window" id="ticker-window" aria-live="polite">
@@ -148,7 +148,14 @@
         <div class="about-cards-wrap">
           <div class="card card-featured reveal" data-reveal style="--d:.15s">
             <div class="card-header">
-              <div class="card-icon">🌱</div>
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 20h10" />
+                  <path d="M12 20v-8" />
+                  <path d="M12 12a5 5 0 0 1 5-5c0 4.5-3 5-5 5Z" />
+                  <path d="M12 12a5 5 0 0 0-5-5c0 4.5 3 5 5 5Z" />
+                </svg>
+              </div>
               <span class="card-tag">First Come First Served</span>
             </div>
             <h3>Mint</h3>
@@ -157,12 +164,23 @@
 
           <div class="cards-sub-grid">
             <div class="card reveal" data-reveal style="--d:.25s">
-              <div class="card-icon">🤝</div>
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
               <h3>Hold Together</h3>
               <p>Created for those who believe in being early and holding together. A tight-knit community built around every Little.</p>
             </div>
             <div class="card card-accent reveal" data-reveal style="--d:.35s">
-              <div class="card-icon">👑</div>
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14" />
+                </svg>
+              </div>
               <h3>Top 50</h3>
               <p>Hold your Little and stay early. Active believers and top holders earn exclusive recognition and future perks in the Top 50.</p>
             </div>

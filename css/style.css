@@ -773,23 +773,14 @@ input:focus-visible {
   flex-shrink: 0;
 }
 
-.highlight-star {
-  font-size: 1.15rem;
-  line-height: 1;
+.ticker-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px rgba(196, 161, 224, 0.35);
+  animation: badgeDotBlink 1.5s ease-in-out infinite;
   flex-shrink: 0;
-  display: inline-block;
-  animation: starTwinkle 2.5s ease-in-out infinite;
-}
-
-@keyframes starTwinkle {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.15) rotate(10deg);
-    opacity: 0.75;
-  }
 }
 
 .ticker-label {
@@ -933,14 +924,25 @@ input:focus-visible {
 }
 
 .card-icon {
-  font-size: 1.65rem;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-  transition: transform 0.3s var(--ease);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(168, 124, 201, 0.12);
+  border: 1px solid rgba(196, 161, 224, 0.3);
 }
 
 .card:hover .card-icon {
-  transform: scale(1.15) rotate(-6deg);
+  transform: translateY(-2px) scale(1.08);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(168, 124, 201, 0.3);
 }
 
 .card h3 {
