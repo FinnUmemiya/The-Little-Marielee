@@ -496,6 +496,8 @@ async function handleSubmit(e) {
     document.getElementById("success-msg").textContent =
       `Welcome to The Little Marielee, @${twitter}. Your Marielee awaits.`;
 
+    addTickerEntry(twitter, wallet);
+
     goToStep("success");
     showWhitelistedUI();
     fetchWhitelistCount();
@@ -506,6 +508,22 @@ async function handleSubmit(e) {
     btnSubmit.disabled = false;
     btnSubmit.classList.remove("is-loading");
   }
+}
+
+// ===== RECENT WHITELIST TICKER =====
+function formatShortWallet(address) {
+  if (!address || address.length < 10) return address || "";
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
+
+function addTickerEntry(twitter, wallet) {
+  const track = document.getElementById("ticker-track");
+  if (!track) return;
+  const shortWallet = formatShortWallet(wallet);
+  const cleanTwitter = twitter.replace(/^@/, "");
+  const itemHtml = `<div class="ticker-item"><span class="ticker-name">@${cleanTwitter}</span><span class="ticker-wallet">${shortWallet}</span></div>`;
+  track.insertAdjacentHTML("afterbegin", itemHtml);
+  track.insertAdjacentHTML("beforeend", itemHtml);
 }
 
 // ===== PROJECT SETTINGS =====
