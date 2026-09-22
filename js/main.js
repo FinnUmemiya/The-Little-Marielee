@@ -346,12 +346,8 @@ function parseTweetUrl(url) {
 }
 
 function isPlausibleWalletAddress(value) {
-  // Ethereum / EVM style (0x + 40 hex chars)
-  if (/^0x[a-fA-F0-9]{40}$/.test(value)) return true;
-  // Solana style (Base58, 32-44 characters)
-  if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(value)) return true;
-  // General crypto address fallback
-  return /^[a-zA-Z0-9]{16,64}$/.test(value);
+  // EVM style only (0x + 40 hex characters) for Ink Chain
+  return /^0x[a-fA-F0-9]{40}$/.test(value.trim());
 }
 
 function validateTwitter(showError = true) {
@@ -423,7 +419,7 @@ function validateWallet(showError = true) {
 
   if (!isPlausibleWalletAddress(wallet)) {
     if (showError) {
-      showFieldError(inputWallet, "err-wallet", "Invalid wallet address format. Please check again.");
+      showFieldError(inputWallet, "err-wallet", "Only EVM wallet addresses (0x...) on Ink Chain are accepted.");
     }
     return false;
   }
@@ -498,7 +494,7 @@ async function handleSubmit(e) {
     localStorage.setItem("marielee_twitter", twitter);
 
     document.getElementById("success-msg").textContent =
-      `Welcome to the soft pack, @${twitter}. Your Marielee awaits.`;
+      `Welcome to The Little Marielee, @${twitter}. Your Marielee awaits.`;
 
     goToStep("success");
     showWhitelistedUI();
@@ -555,7 +551,7 @@ function applyProjectSettings(settings) {
   // Dynamic meta tags
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) {
-    metaDesc.setAttribute("content", `The Little Marielee — A collection of ${supply} unique NFTs. Free mint. Join the pack.`);
+    metaDesc.setAttribute("content", `The Little Marielee — A collection of ${supply} unique NFTs. Free mint. Join The Little Marielee.`);
   }
   const ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) {

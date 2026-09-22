@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Little Marielee — Soft Whitelist</title>
-  <meta name="description" content="The Little Marielee — A collection of 0 unique NFTs. Free mint. Join the pack." />
+  <meta name="description" content="The Little Marielee — A collection of 0 unique NFTs. Free mint. Join The Little Marielee." />
   <meta name="theme-color" content="#f8f4fc" />
 
   <!-- Open Graph -->
@@ -90,7 +90,7 @@
 
       <div class="whitelist-status" id="whitelist-status" hidden>
         <span class="whitelist-status-dot" aria-hidden="true"></span>
-        <span>You are on the whitelist <span aria-hidden="true">✨</span> The soft pack awaits.</span>
+        <span>You are on the whitelist <span aria-hidden="true">✨</span> The Little Marielee awaits.</span>
       </div>
 
       <div class="whitelist-status is-full" id="whitelist-full-status" hidden>
@@ -236,7 +236,9 @@
       <!-- Step 2: Wallet Submission -->
       <div class="modal-step" id="step-2" hidden>
         <div class="modal-header">
-          <div class="step-icon">👜</div>
+          <div class="step-icon step-icon-logo">
+            <img src="assets/favicon.png?v=2" alt="The Little Marielee Logo" class="step-icon-img" />
+          </div>
           <h3>Submit Wallet</h3>
           <p class="submitting-as-desc">Submitting as <span id="submitting-as" class="submitting-as-tag">@yourusername</span></p>
         </div>
@@ -245,9 +247,9 @@
           <div class="form-group">
             <label for="input-wallet" class="form-label">Wallet Address</label>
             <div class="field field-simple">
-              <input type="text" id="input-wallet" placeholder="0x... or Solana wallet address" autocomplete="off" aria-describedby="err-wallet" required />
+              <input type="text" id="input-wallet" placeholder="0x... (Ink Chain EVM)" autocomplete="off" aria-describedby="err-wallet" required />
             </div>
-            <p class="field-hint">Enter your EVM (0x...) or Solana wallet to receive the whitelist spot.</p>
+            <p class="field-hint">Enter your EVM wallet address (0x...) on Ink Chain to receive your whitelist spot.</p>
             <p class="field-error" id="err-wallet"></p>
           </div>
 
@@ -264,7 +266,7 @@
           <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5" /></svg>
         </div>
         <h3>You're In!</h3>
-        <p id="success-msg">Welcome to the soft pack. Your Marielee awaits.</p>
+        <p id="success-msg">Welcome to The Little Marielee. Your Marielee awaits.</p>
         <button type="button" class="btn-modal" id="btn-done"><span>Done</span></button>
       </div>
     </div>
