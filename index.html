@@ -35,24 +35,48 @@
     <div class="grain"></div>
   </div>
 
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <img src="assets/favicon.png?v=2" alt="Logo" class="nav-logo" />
+        <span class="nav-brand-text">The Little Marielee</span>
+      </a>
+      <div class="nav-actions">
+        <a href="#about" class="nav-link">The Little</a>
+        <a href="https://x.com/MarieleeHQ" target="_blank" rel="noopener" class="nav-link nav-link-icon" id="nav-x" title="X / Twitter">
+          <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M18.9 1.9h3.7l-8 9.2 9.5 12.5h-7.4l-5.8-7.6-6.6 7.6H.6l8.6-9.9L0 1.9h7.6l5.2 7 6.1-7Zm-1.3 19.5h2L6.5 4h-2.1l13.2 17.4Z"/></svg>
+          <span>Twitter</span>
+        </a>
+        <a href="https://opensea.io/collection/thelittlemarielee/overview" target="_blank" rel="noopener" class="nav-link" id="nav-opensea">OpenSea</a>
+        <button type="button" class="btn-nav" id="btn-nav-join">Join Whitelist</button>
+      </div>
+    </div>
+  </nav>
+
   <!-- ===== HERO ===== -->
   <header class="hero">
     <div class="hero-content">
-      <!-- <p class="hero-tagline reveal-item" style="--d:.05s">Softly forged in quiet gardens</p> -->
-      <p class="hero-tagline reveal-item" style="--d:.05s">BE LITTLE. BE UNIQUE</p>
+      <div class="hero-badge reveal-item" style="--d:.05s">
+        <span class="badge-dot"></span>
+        <span>BE LITTLE. BE UNIQUE</span>
+      </div>
       <h1 class="hero-title reveal-item" style="--d:.15s">The Little<br>Marielee</h1>
       <p class="hero-subtitle reveal-item" style="--d:.25s"><span id="hero-supply">0</span> little souls waiting to bloom</p>
 
-      <div class="stats reveal-item" style="--d:.35s">
-        <div class="stat">
+      <!-- Minimal Frosted Capsule Dock for Stats -->
+      <div class="stats-dock reveal-item" style="--d:.35s">
+        <div class="stat-item">
           <span class="stat-label">Mint</span>
           <span class="stat-value">FREE</span>
         </div>
-        <div class="stat">
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
           <span class="stat-label">Supply</span>
           <span class="stat-value" id="stat-supply">0</span>
         </div>
-        <div class="stat">
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
           <span class="stat-label">Whitelisted</span>
           <span class="stat-value" id="whitelist-count" aria-live="polite">
             <span class="count-skeleton"></span>
@@ -84,36 +108,48 @@
   <!-- ===== ABOUT ===== -->
   <section class="about" id="about">
     <div class="container">
-      <h2 class="section-title reveal" data-reveal>The Little</h2>
-      <div class="section-line reveal" data-reveal style="--d:.1s"></div>
-
-      <div class="about-text reveal" data-reveal style="--d:.15s">
-        <p>
-          Before the noise, before the rush — there was The Little. A collection of <span class="article-supply">0</span> unique NFTs, created for those who believe in being early and holding together.
-        </p>
-        <p>
-          No random generators. No complicated rules. Just <span class="article-supply">0</span> unique pieces and a community built around them.
-        </p>
-        <p class="about-highlight">
-          Hold your Little. Stay early. Become part of the Top 50.
-        </p>
-      </div>
-
-      <div class="cards">
-        <div class="card reveal" data-reveal style="--d:0s">
-          <div class="card-icon">🌱</div>
-          <h3>Mint</h3>
-          <p>No random generators. No complicated rules. Just <span id="about-supply" class="article-supply">0</span> unique pieces, first come first served. Minting Price TBA</p>
+      <div class="about-grid">
+        <!-- Left Column: Story & Lore -->
+        <div class="about-editorial reveal" data-reveal style="--d:.1s">
+          <span class="section-kicker">01 // THE LITTLE</span>
+          <h2 class="about-heading">Softly Forged in Quiet Gardens</h2>
+          <div class="about-text">
+            <p>
+              Before the noise, before the rush — there was The Little. A collection of <span class="article-supply">0</span> unique NFTs, created for those who believe in being early and holding together.
+            </p>
+            <p>
+              No random generators. No complicated rules. Just <span class="article-supply">0</span> unique pieces and a community built around them.
+            </p>
+            <div class="about-highlight-box">
+              <span class="highlight-star">✨</span>
+              <p class="about-highlight">Hold your Little. Stay early. Become part of the Top 50.</p>
+            </div>
+          </div>
         </div>
-        <div class="card reveal" data-reveal style="--d:.1s">
-          <div class="card-icon">🤝</div>
-          <h3>Hold Together</h3>
-          <p>Created for those who believe in being early and holding together. A tight-knit community built around every Little.</p>
-        </div>
-        <div class="card reveal" data-reveal style="--d:.2s">
-          <div class="card-icon">👑</div>
-          <h3>Top 50</h3>
-          <p>Hold your Little and stay early. Active believers and top holders earn exclusive recognition and future perks in the Top 50.</p>
+
+        <!-- Right Column: Asymmetric Cards -->
+        <div class="about-cards-wrap">
+          <div class="card card-featured reveal" data-reveal style="--d:.15s">
+            <div class="card-header">
+              <div class="card-icon">🌱</div>
+              <span class="card-tag">First Come First Served</span>
+            </div>
+            <h3>Mint</h3>
+            <p>No random generators. No complicated rules. Just <span id="about-supply" class="article-supply">0</span> unique pieces, first come first served. Minting Price TBA</p>
+          </div>
+
+          <div class="cards-sub-grid">
+            <div class="card reveal" data-reveal style="--d:.25s">
+              <div class="card-icon">🤝</div>
+              <h3>Hold Together</h3>
+              <p>Created for those who believe in being early and holding together. A tight-knit community built around every Little.</p>
+            </div>
+            <div class="card card-accent reveal" data-reveal style="--d:.35s">
+              <div class="card-icon">👑</div>
+              <h3>Top 50</h3>
+              <p>Hold your Little and stay early. Active believers and top holders earn exclusive recognition and future perks in the Top 50.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

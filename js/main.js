@@ -29,6 +29,7 @@ let projectSettings = {
 // ===== DOM REFS =====
 const modal = document.getElementById("modal");
 const btnJoin = document.getElementById("btn-join");
+const btnNavJoin = document.getElementById("btn-nav-join");
 const btnClose = document.getElementById("modal-close");
 const whitelistCountEl = document.getElementById("whitelist-count");
 const whitelistStatusEl = document.getElementById("whitelist-status");
@@ -102,6 +103,7 @@ function setupScrollReveal() {
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
   btnJoin.addEventListener("click", openModal);
+  if (btnNavJoin) btnNavJoin.addEventListener("click", openModal);
   btnClose.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
@@ -573,6 +575,21 @@ function applyProjectSettings(settings) {
     taskFollowStatusEl.textContent = `Follow @${handle} on X to verify`;
   }
 
+  // Nav Links
+  const navX = document.getElementById("nav-x");
+  if (navX) navX.href = `https://x.com/${encodeURIComponent(handle)}`;
+
+  const navOpensea = document.getElementById("nav-opensea");
+  if (navOpensea) {
+    const openseaUrl = (projectSettings.openseaUrl || "").trim();
+    if (openseaUrl) {
+      navOpensea.href = openseaUrl;
+      navOpensea.hidden = false;
+    } else {
+      navOpensea.hidden = true;
+    }
+  }
+
   // Footer Links
   const footerX = document.getElementById("footer-x");
   if (footerX) footerX.href = `https://x.com/${encodeURIComponent(handle)}`;
@@ -635,6 +652,11 @@ function checkSupplyCap() {
       btnJoin.title = `Whitelist is closed! All ${maxSupply.toLocaleString()} spots are full.`;
       if (btnJoinSpan) btnJoinSpan.textContent = "Whitelist Full";
     }
+    if (btnNavJoin) {
+      btnNavJoin.classList.add("is-frozen");
+      btnNavJoin.setAttribute("aria-disabled", "true");
+      btnNavJoin.textContent = "Full";
+    }
     if (whitelistFullStatusEl) {
       whitelistFullStatusEl.hidden = false;
       const msgSpan = whitelistFullStatusEl.querySelector(".full-status-msg");
@@ -648,6 +670,11 @@ function checkSupplyCap() {
       btnJoin.removeAttribute("aria-disabled");
       btnJoin.title = "";
       if (btnJoinSpan) btnJoinSpan.textContent = "Join Whitelist";
+    }
+    if (btnNavJoin) {
+      btnNavJoin.classList.remove("is-frozen");
+      btnNavJoin.removeAttribute("aria-disabled");
+      btnNavJoin.textContent = "Join Whitelist";
     }
     if (whitelistFullStatusEl) {
       whitelistFullStatusEl.hidden = true;
@@ -738,5 +765,6 @@ function checkLocalWhitelist() {
 
 function showWhitelistedUI() {
   btnJoin.hidden = true;
+  if (btnNavJoin) btnNavJoin.hidden = true;
   whitelistStatusEl.hidden = false;
 }
